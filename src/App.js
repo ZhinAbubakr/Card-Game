@@ -6,7 +6,6 @@ function App() {
   const [value, setValue] = useState([]);
   const [secondCard, setSecondCard] = useState([]);
   const [secondValue, setSecondValue] = useState([]);
-  const [message, setMessage] = useState("");
 
   const fetchMyAPI = useCallback(async () => {
     let response = await fetch(
@@ -23,18 +22,39 @@ function App() {
     fetchMyAPI();
   }, [fetchMyAPI]);
 
-  const messages = () => {
-    if (value > secondValue) {
-      setMessage("win");
-    } else {
-      setMessage("lose");
-    }
-  };
-  console.log(message);
-
   return (
     <div>
-      <h1>Hello React!</h1>
+      <div className="App">
+        <h2>Card Game </h2>
+      </div>
+      <div>
+        <h3>Player one</h3>
+      </div>
+      <div>
+        <button onClick={fetchMyAPI} style={{ margin: 20 }}>
+          <img
+            style={{ height: 310, width: 200 }}
+            src="https://previews.123rf.com/images/orcearo/orcearo1212/orcearo121200004/17069555-playing-card-back-red-abstract-floral-pattern-closeup.jpg"
+            alt="button image"
+          />
+        </button>
+        <img src={card} alt="card image" />
+        <h1 style={{ margin: "auto" }}>The Value is: {value}</h1>
+      </div>
+      <div>
+        <h3>Player two</h3>
+      </div>
+      <div>
+        <button style={{ margin: 20 }}>
+          <img
+            style={{ height: 310, width: 200 }}
+            src="https://previews.123rf.com/images/orcearo/orcearo1212/orcearo121200004/17069555-playing-card-back-red-abstract-floral-pattern-closeup.jpg"
+            alt="button image"
+          />
+        </button>
+        <img src={secondCard} alt="card image" />
+        <h1 style={{ margin: "auto" }}>The Value is: {secondValue}</h1>
+      </div>
     </div>
   );
 }
